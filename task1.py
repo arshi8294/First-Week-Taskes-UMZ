@@ -1,5 +1,7 @@
 def isList(x:str):
-    if "," in x:
+    if x[len(x) - 1] == ']' and x[0] == '[':
+        return True
+    elif "," in x:
         return True
     return False
     
@@ -27,6 +29,8 @@ def isInt(x:str):
 userInput = input("Enter your data : ")
 
 if isList(userInput):
+    userInput = userInput.replace("[" , "")
+    userInput = userInput.replace("]" , "")
     lst = userInput.split(",")
     lst = [i.strip() for i in lst]
     print(f"Your input is list items and it equals to : {lst} ")
@@ -38,4 +42,5 @@ elif isFloat(userInput):
     print(f"Your input is a float number and it equals to : {fNum}")
 else :
     print(f"Your input is a normal string and it equals to : {userInput}")
+
 
